@@ -1,22 +1,23 @@
 package puxiaoshuai.com.todo.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Administrator on 2018/12/13 0013.
  */
 
-public class TaskBean {
+public class TaskBean  {
 
     /**
      * message : 成功
      * code : 200
-     * data : [{"id":3,"title":"逸闻趣事","content":"hahahahahah","create_time":"2018-12-13 13:53:39"},{"id":4,"title":"有趣的一件事情2","content":"彩票中奖啦","create_time":"2018-12-13 14:05:46"}]
+     * data : {"page":"2","page_size":"2","total_num":10,"list":[{"id":10,"title":"存储此处错错错错错","content":"飞飞飞飞飞凤飞飞","create_time":"2018-12-16 19:27:02"},{"id":9,"title":"测试2","content":"222222222222","create_time":"2018-12-16 19:26:53"}]}
      */
 
     private String message;
     private int code;
-    private List<DataBean> data;
+    private DataBean data;
 
     public String getMessage() {
         return message;
@@ -34,57 +35,103 @@ public class TaskBean {
         this.code = code;
     }
 
-    public List<DataBean> getData() {
+    public DataBean getData() {
         return data;
     }
 
-    public void setData(List<DataBean> data) {
+    public void setData(DataBean data) {
         this.data = data;
     }
 
     public static class DataBean {
         /**
-         * id : 3
-         * title : 逸闻趣事
-         * content : hahahahahah
-         * create_time : 2018-12-13 13:53:39
+         * page : 2
+         * page_size : 2
+         * total_num : 10
+         * list : [{"id":10,"title":"存储此处错错错错错","content":"飞飞飞飞飞凤飞飞","create_time":"2018-12-16 19:27:02"},{"id":9,"title":"测试2","content":"222222222222","create_time":"2018-12-16 19:26:53"}]
          */
 
-        private int id;
-        private String title;
-        private String content;
-        private String create_time;
+        private String page;
+        private String page_size;
+        private int total_num;
+        private List<ListBean> list;
 
-        public int getId() {
-            return id;
+        public String getPage() {
+            return page;
         }
 
-        public void setId(int id) {
-            this.id = id;
+        public void setPage(String page) {
+            this.page = page;
         }
 
-        public String getTitle() {
-            return title;
+        public String getPage_size() {
+            return page_size;
         }
 
-        public void setTitle(String title) {
-            this.title = title;
+        public void setPage_size(String page_size) {
+            this.page_size = page_size;
         }
 
-        public String getContent() {
-            return content;
+        public int getTotal_num() {
+            return total_num;
         }
 
-        public void setContent(String content) {
-            this.content = content;
+        public void setTotal_num(int total_num) {
+            this.total_num = total_num;
         }
 
-        public String getCreate_time() {
-            return create_time;
+        public List<ListBean> getList() {
+            return list;
         }
 
-        public void setCreate_time(String create_time) {
-            this.create_time = create_time;
+        public void setList(List<ListBean> list) {
+            this.list = list;
+        }
+
+        public static class ListBean implements Serializable {
+            /**
+             * id : 10
+             * title : 存储此处错错错错错
+             * content : 飞飞飞飞飞凤飞飞
+             * create_time : 2018-12-16 19:27:02
+             */
+
+            private int id;
+            private String title;
+            private String content;
+            private String create_time;
+
+            public int getId() {
+                return id;
+            }
+
+            public void setId(int id) {
+                this.id = id;
+            }
+
+            public String getTitle() {
+                return title;
+            }
+
+            public void setTitle(String title) {
+                this.title = title;
+            }
+
+            public String getContent() {
+                return content;
+            }
+
+            public void setContent(String content) {
+                this.content = content;
+            }
+
+            public String getCreate_time() {
+                return create_time;
+            }
+
+            public void setCreate_time(String create_time) {
+                this.create_time = create_time;
+            }
         }
     }
 }

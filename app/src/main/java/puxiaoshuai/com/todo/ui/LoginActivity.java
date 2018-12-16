@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
+import com.vondear.rxtool.RxActivityTool;
 import com.vondear.rxtool.RxAnimationTool;
 import com.vondear.rxtool.RxBarTool;
 import com.vondear.rxtool.RxDataTool;
@@ -83,16 +85,17 @@ public class LoginActivity extends ActivityBase {
         setContentView(R.layout.activity_login);
         RxBarTool.StatusBarLightMode(this);
         ButterKnife.bind(this);
-
+        Log.v("TAG","loginactivity");
+        getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);//不自动弹出键盘
         mEtMobile.setText(RxSPTool.getString(mContext, Constants.UserName));
         String token=RxSPTool.getString(mContext, Constants.Token);
         if (!RxDataTool.isNullString(token))
         {
-            startActivity(new Intent(mContext,MainActivity.class));
+            //RxActivityTool.skipActivityAndFinish(mContext,MainActivity.class);
+            Intent intent=new Intent(mContext,MainActivity.class);
+            startActivity(intent);
             finish();
         }
-
-
 
         initView();
         initEvent();
@@ -228,9 +231,7 @@ public class LoginActivity extends ActivityBase {
                                         String token=data.optString("token");
                                         RxSPTool.putString(mContext, Constants.UserName,username);
                                         RxSPTool.putString(mContext, Constants.Token,token);
-                                        Intent intent=new Intent(mContext,MainActivity.class);
-                                        mContext.startActivity(intent);
-                                        finish();
+                                        RxActivityTool.skipActivityAndFinish(mContext,MainActivity.class);
                                     }else {
                                         RxToast.warning(jsonObject.optString("message"));
 

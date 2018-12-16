@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.TaskDetailsActivity">
+
+    <com.vondear.rxui.view.RxTitle
+        android:id="@+id/title"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rightText="修改"
+        app:rightTextSize="@dimen/sp_14"
+        app:leftIconVisibility="true"
+        app:rightTextVisibility="true"
+        app:title="详情"/>
+
+    <EditText
+        android:maxLength="64"
+
+        android:textSize="16sp"
+        android:hint="请输入标题"
+        android:textColorHint="#5b5b5b"
+        android:padding="8dp"
+        android:background="@drawable/bg_task_title"
+        android:id="@+id/ed_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:maxLines="18"
+        android:textColorHint="#5b5b5b"
+        android:textSize="14sp"
+        android:hint="请输入内容"
+        android:padding="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_task_content"
+        android:id="@+id/ed_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top"
+        android:text="" />
+</LinearLayout>
