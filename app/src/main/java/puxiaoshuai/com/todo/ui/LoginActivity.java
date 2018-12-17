@@ -88,14 +88,7 @@ public class LoginActivity extends ActivityBase {
         Log.v("TAG","loginactivity");
         getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);//不自动弹出键盘
         mEtMobile.setText(RxSPTool.getString(mContext, Constants.UserName));
-        String token=RxSPTool.getString(mContext, Constants.Token);
-        if (!RxDataTool.isNullString(token))
-        {
-            //RxActivityTool.skipActivityAndFinish(mContext,MainActivity.class);
-            Intent intent=new Intent(mContext,MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
+
 
         initView();
         initEvent();

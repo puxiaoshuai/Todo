@@ -111,7 +111,7 @@ public class MainActivity extends ActivityBase implements View.OnClickListener {
     }
 
     private void initRefreshLout() {
-        swipeFresh.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimaryDark);
+        swipeFresh.setColorSchemeResources( R.color.colorPrimaryDark,R.color.colorAccent);
         swipeFresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
