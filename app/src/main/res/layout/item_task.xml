@@ -12,6 +12,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <TextView
+    android:textColor="@color/black"
     android:textSize="14sp"
     android:id="@+id/task_title"
     android:layout_marginTop="8dp"
@@ -30,6 +31,19 @@
         android:text="content"
         android:layout_width="match_parent"
         android:layout_height="0dp" />
+
+    <com.lzy.ninegrid.NineGridView
+        android:layout_margin="8dp"
+        android:id="@+id/ninegridview"
+        app:ngv_maxSize="3"
+        app:ngv_mode="grid"
+        app:ngv_singleImageRatio="1"
+        app:ngv_singleImageSize="160dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    </com.lzy.ninegrid.NineGridView>
     <TextView
         android:textSize="12sp"
         android:id="@+id/task_time"

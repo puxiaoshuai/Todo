@@ -6,6 +6,9 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.lzy.ninegrid.ImageInfo;
+import com.lzy.ninegrid.NineGridView;
+import com.lzy.ninegrid.preview.NineGridViewClickAdapter;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
@@ -78,6 +81,7 @@ public class TaskAdapter extends BaseQuickAdapter<TaskBean.DataBean.ListBean,Bas
                 return true;
             }
         });
+
         helper.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,5 +91,45 @@ public class TaskAdapter extends BaseQuickAdapter<TaskBean.DataBean.ListBean,Bas
                 RxActivityTool.skipActivity(mContext,TaskDetailsActivity.class,bundle);
             }
         });
+        ArrayList<ImageInfo> imageInfos = new ArrayList<>();
+
+        if (helper.getAdapterPosition()==1){
+            ImageInfo imageInfo1=new ImageInfo();
+            imageInfo1.setBigImageUrl("http://d.hiphotos.baidu.com/image/pic/item/91ef76c6a7efce1b5ef04082a251f3deb58f659b.jpg");
+            imageInfo1.setThumbnailUrl("http://d.hiphotos.baidu.com/image/pic/item/91ef76c6a7efce1b5ef04082a251f3deb58f659b.jpg");
+            imageInfos.add(imageInfo1);
+        }else  if (helper.getAdapterPosition()==2){
+            ImageInfo imageInfo1=new ImageInfo();
+            imageInfo1.setBigImageUrl("http://g.hiphotos.baidu.com/image/pic/item/5bafa40f4bfbfbed5572eb3875f0f736afc31f4a.jpg");
+            imageInfo1.setThumbnailUrl("http://g.hiphotos.baidu.com/image/pic/item/5bafa40f4bfbfbed5572eb3875f0f736afc31f4a.jpg");
+
+            ImageInfo imageInfo3=new ImageInfo();
+            imageInfo3.setBigImageUrl("http://h.hiphotos.baidu.com/image/pic/item/f2deb48f8c5494eec7036a5f20f5e0fe99257e56.jpg");
+            imageInfo3.setThumbnailUrl("http://h.hiphotos.baidu.com/image/pic/item/f2deb48f8c5494eec7036a5f20f5e0fe99257e56.jpg");
+            imageInfos.add(imageInfo1);
+
+            imageInfos.add(imageInfo3);
+        }
+        else {
+            ImageInfo imageInfo1=new ImageInfo();
+            imageInfo1.setBigImageUrl("http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b2119202e609c78065380cd78e4c.jpg");
+            imageInfo1.setThumbnailUrl("http://b.hiphotos.baidu.com/image/pic/item/11385343fbf2b2119202e609c78065380cd78e4c.jpg");
+            ImageInfo imageInfo2=new ImageInfo();
+            imageInfo2.setBigImageUrl("http://g.hiphotos.baidu.com/image/pic/item/d52a2834349b033bd5d4739f18ce36d3d539bd13.jpg");
+            imageInfo2.setThumbnailUrl("http://g.hiphotos.baidu.com/image/pic/item/d52a2834349b033bd5d4739f18ce36d3d539bd13.jpg");
+            ImageInfo imageInfo3=new ImageInfo();
+            imageInfo3.setBigImageUrl("http://h.hiphotos.baidu.com/image/pic/item/b3fb43166d224f4af75c135404f790529922d1b4.jpg");
+            imageInfo3.setThumbnailUrl("http://h.hiphotos.baidu.com/image/pic/item/b3fb43166d224f4af75c135404f790529922d1b4.jpg");
+            ImageInfo imageInfo4=new ImageInfo();
+            imageInfo4.setBigImageUrl("http://b.hiphotos.baidu.com/image/pic/item/4bed2e738bd4b31cce8a1df38ad6277f9f2ff8c0.jpg");
+            imageInfo4.setThumbnailUrl("http://b.hiphotos.baidu.com/image/pic/item/4bed2e738bd4b31cce8a1df38ad6277f9f2ff8c0.jpg");
+            imageInfos.add(imageInfo1);
+            imageInfos.add(imageInfo2);
+            imageInfos.add(imageInfo3);
+            imageInfos.add(imageInfo4);
+        }
+        NineGridView mgrid=helper.getView(R.id.ninegridview);
+        mgrid.setAdapter(new NineGridViewClickAdapter(mContext,imageInfos));
+
     }
 }

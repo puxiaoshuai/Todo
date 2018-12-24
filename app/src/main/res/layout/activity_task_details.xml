@@ -39,8 +39,16 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/bg_task_content"
         android:id="@+id/ed_content"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:gravity="top"
         android:text="" />
+    <com.yzs.imageshowpickerview.ImageShowPickerView
+        android:id="@+id/image_picker"
+        app:pic_size="60dp"
+        app:max_num="3"
+        app:is_show_del="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

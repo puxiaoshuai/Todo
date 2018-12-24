@@ -17,6 +17,7 @@ import com.lzy.okgo.model.Response;
 import com.melnykov.fab.FloatingActionButton;
 import com.vondear.rxtool.RxActivityTool;
 import com.vondear.rxtool.RxDataTool;
+import com.vondear.rxtool.RxFragmentTool;
 import com.vondear.rxtool.RxSPTool;
 import com.vondear.rxtool.view.RxToast;
 import com.vondear.rxui.activity.ActivityBase;
@@ -31,6 +32,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.weyye.hipermission.HiPermission;
+import me.weyye.hipermission.PermissionCallback;
 import puxiaoshuai.com.todo.R;
 import puxiaoshuai.com.todo.adapter.TaskAdapter;
 import puxiaoshuai.com.todo.base.Net_Api;
@@ -77,14 +80,36 @@ public class MainActivity extends ActivityBase implements View.OnClickListener {
         initEmptyView();
         initView();
         initRefreshLout();
+
         //第一次加载
         swipeFresh.setRefreshing(true);
         new Handler().postDelayed(new Runnable(){
             public void run() {
                 refresh();
             }
-        }, 2000);
+        }, 1000);
+        HiPermission.create(mContext)
+                .checkMutiPermission(new PermissionCallback() {
+                    @Override
+                    public void onClose() {
 
+                    }
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+
+                    @Override
+                    public void onDeny(String permission, int position) {
+
+                    }
+
+                    @Override
+                    public void onGuarantee(String permission, int position) {
+
+                    }
+                });
 
 
     }
