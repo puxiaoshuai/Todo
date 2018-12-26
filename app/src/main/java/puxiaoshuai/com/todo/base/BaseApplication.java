@@ -48,8 +48,8 @@ public class BaseApplication extends Application {
         @Override
         public void onDisplayImage(Context context, ImageView imageView, String url) {
             Picasso.with(context).load(url)//
-                    .placeholder(R.drawable.icon_placeholder)//
-                    .error(R.drawable.icon_placeholder)//
+                    .placeholder(R.drawable.ic_default)//
+                    .error(R.drawable.ic_default)//
                     .into(imageView);
         }
 

@@ -7,6 +7,7 @@ package puxiaoshuai.com.todo.base;
 public class Net_Api {
     public static  final String  BASE_URl="http://192.168.3.134:1212/todo/api";
     public static  final String  Login_url=BASE_URl+"/login/";
+    public  static  final  String BASE_IMG="http://pk8032lux.bkt.clouddn.com/";
     public static  final String  Logout_url=BASE_URl+"/logout/";
     public static  final String  Register_url=BASE_URl+"/register/";
     public static  final String  Task_list=BASE_URl+"/tasks/";

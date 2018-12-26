@@ -100,6 +100,15 @@ public class TaskBean  {
             private String title;
             private String content;
             private String create_time;
+            private List<String> images;
+
+            public List<String> getImages() {
+                return images;
+            }
+
+            public void setImages(List<String> images) {
+                this.images = images;
+            }
 
             public int getId() {
                 return id;

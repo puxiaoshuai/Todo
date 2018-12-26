@@ -164,12 +164,13 @@ public class TaskDetailsActivity extends ActivityBase {
                     }
                     PostRequest<String> params = OkGo.<String>post(Net_Api.Task_add)
                             .params("title", title)
-                            .params("content", content);
+                            .params("content", content)
+                            .addUrlParams("files",mFile_key);
 
-                    for (int i = 0; i < mFile_key.size(); i++) {
-                        params.params("files",mFile_key.get(i));
-
-                    }
+//                    for (int i = 0; i < mFile_key.size(); i++) {
+//                        params.params("files",mFile_key.get(i));
+//
+//                    }
                     params.params("token", RxSPTool.getString(mContext, Constants.Token))
                             .execute(new StringCallback() {
                                 @Override

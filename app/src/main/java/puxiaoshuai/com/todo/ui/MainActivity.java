@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
+import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.melnykov.fab.FloatingActionButton;
@@ -58,6 +59,7 @@ public class MainActivity extends ActivityBase implements View.OnClickListener {
     private int page = 1;
     private ArrayList<TaskBean.DataBean.ListBean> mDataBeans = new ArrayList<>();
     private View mEmptyView;
+    private boolean isInitCache=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,17 +158,17 @@ public class MainActivity extends ActivityBase implements View.OnClickListener {
 
     }
 
-
     private void load_refreshdata(int page) {
         OkGo.<String>post(Net_Api.Task_list).
                 params("token", mToken).
                 params("page", page).
+                cacheMode(CacheMode.REQUEST_FAILED_READ_CACHE)
+                .cacheKey("task").
                 execute(new StringCallback() {
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
-                        Log.v("TAG", response.body());
-                        mTaskAdapter.setEnableLoadMore(true);
+
                         swipeFresh.setRefreshing(false);
 
                     }
@@ -196,6 +198,14 @@ public class MainActivity extends ActivityBase implements View.OnClickListener {
 
                         }
                     }
+
+                    @Override
+                    public void onCacheSuccess(Response<String> response) {
+                       if (!isInitCache){
+                           onSuccess(response);
+                           isInitCache=true;
+                       }
+                    }
                 });
     }
 
@@ -203,6 +213,7 @@ public class MainActivity extends ActivityBase implements View.OnClickListener {
         OkGo.<String>post(Net_Api.Task_list).
                 params("token", mToken).
                 params("page", page).
+                cacheMode(CacheMode.NO_CACHE).
                 execute(new StringCallback() {
                     @Override
                     public void onError(Response<String> response) {
