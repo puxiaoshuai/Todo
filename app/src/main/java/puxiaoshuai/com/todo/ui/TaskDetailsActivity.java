@@ -90,6 +90,16 @@ public class TaskDetailsActivity extends ActivityBase {
     }
     private void get_image() {
         mImagePicker.setImageLoaderInterface(new Loader());
+        //添加时候，是没有task的
+        try {
+            for (int i = 0; i < mTask.getImages().size(); i++) {
+                mFile_key.add(mTask.getImages().get(i));
+                mImageBeans.add(new ImageBean(Net_Api.BASE_IMG+mTask.getImages().get(i)));
+            }
+        }catch (NullPointerException e){
+
+        }
+
         mImagePicker.setNewData(mImageBeans);
         mImagePicker.setShowAnim(true);
         mImagePicker.setPickerListener(new ImageShowPickerListener() {
@@ -167,10 +177,6 @@ public class TaskDetailsActivity extends ActivityBase {
                             .params("content", content)
                             .addUrlParams("files",mFile_key);
 
-//                    for (int i = 0; i < mFile_key.size(); i++) {
-//                        params.params("files",mFile_key.get(i));
-//
-//                    }
                     params.params("token", RxSPTool.getString(mContext, Constants.Token))
                             .execute(new StringCallback() {
                                 @Override
@@ -195,6 +201,7 @@ public class TaskDetailsActivity extends ActivityBase {
         } else {
             edTitle.setText(task_data.getTitle());
             edContent.setText(task_data.getContent());
+
             title.setRightTextOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -207,6 +214,7 @@ public class TaskDetailsActivity extends ActivityBase {
                             .params("title", title)
                             .params("content", content)
                             .params("token", RxSPTool.getString(mContext, Constants.Token))
+                            .addUrlParams("files",mFile_key)
                             .execute(new StringCallback() {
                                 @Override
                                 public void onError(Response<String> response) {
@@ -248,7 +256,7 @@ public class TaskDetailsActivity extends ActivityBase {
                          }
 
                         } else {
-                            Log.v("T",res.toString());
+
                         }
 
                     }

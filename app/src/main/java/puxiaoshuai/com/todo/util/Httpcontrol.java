@@ -35,13 +35,13 @@ public class Httpcontrol {
            if (code.equals("200")) {
                return response;
            }else if (code.equals("401")){
-               RxToast.error(message);
+               RxToast.success(message);
                RxSPTool.remove(mContext, Constants.Token);
                RxActivityTool.skipActivityAndFinishAll(mContext,LoginActivity.class);
 
 
            }else {
-               RxToast.warning(message);
+               RxToast.success(message);
            }
 
        } catch (Exception e) {

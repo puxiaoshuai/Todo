@@ -2,6 +2,7 @@ package puxiaoshuai.com.todo.adapter;
 
 import android.content.Context;
 import android.support.annotation.DrawableRes;
+import android.util.Log;
 import android.widget.ImageView;
 
 
@@ -17,8 +18,10 @@ public class Loader extends ImageLoader {
     public void displayImage(Context context, String path, ImageView imageView) {
         if (path.startsWith("http"))
         {
+            Log.v("url",path);
             Picasso.with(context).load(path).into(imageView);
         }else {
+            Log.v("url",path);
             Picasso.with(context).load("file://"+path)
                     .into(imageView);
         }

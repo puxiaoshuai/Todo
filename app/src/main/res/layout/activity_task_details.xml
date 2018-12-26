@@ -17,10 +17,8 @@
         app:leftIconVisibility="true"
         app:rightTextVisibility="true"
         app:title="详情"/>
-
     <EditText
         android:maxLength="64"
-
         android:textSize="16sp"
         android:hint="请输入标题"
         android:textColorHint="#5b5b5b"
@@ -28,8 +26,7 @@
         android:background="@drawable/bg_task_title"
         android:id="@+id/ed_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="40dp" />
     <EditText
         android:maxLines="18"
         android:textColorHint="#5b5b5b"
@@ -46,7 +43,7 @@
         android:text="" />
     <com.yzs.imageshowpickerview.ImageShowPickerView
         android:id="@+id/image_picker"
-        app:pic_size="60dp"
+        app:pic_size="80dp"
         app:max_num="3"
         app:is_show_del="true"
         android:layout_width="match_parent"
